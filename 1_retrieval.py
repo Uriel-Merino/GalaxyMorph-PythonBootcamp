@@ -4,8 +4,8 @@ query = """
     SELECT TOP 5
         z.*,
         p.*
-    FROM dbo.ZooSpec AS z
-    JOIN dbo.PhotoObjDR7 AS p
+    FROM ZooSpec AS z
+    JOIN PhotoObjDR7 AS p
     ON p.dr7objid = z.dr7objid
 """
 
