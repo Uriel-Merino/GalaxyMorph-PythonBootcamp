@@ -103,7 +103,7 @@ def resume_download(TABLE="ZooSpecPhoto",CHUNK=50000):
 
     # Final check:
     final=pd.read_csv(csv,usecols=["dr7objid"])
-    print(f"Rows in the CSV: {len(final)} of {rows} | dr7objid unique: {final['dr7objid'].is_unique}")
+    print(f"Rows in the CSV: {len(final)} of {rows}, dr7objid unique: {final['dr7objid'].is_unique}")
     print("All the data has been downloaded!")
 
 """MAIN"""
