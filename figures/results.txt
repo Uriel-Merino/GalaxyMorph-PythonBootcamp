@@ -1,0 +1,44 @@
+N = 10000 galaxies | train = 7500 | test = 2500
+Catalog features used: ['mag_u', 'mag_g', 'mag_r', 'mag_i', 'mag_z', 'u_g', 'g_r', 'r_i', 'i_z', 'concentration', 'petror50_r', 'petror90_r']
+PCA: 64 components keep 95.7% of the variance of the pictures
+
+=== Grid search (bigger grid) ===
+catalog  best knobs {'svc__C': 10, 'svc__gamma': 'scale'}  test accuracy = 0.927
+stamps   best knobs {'svc__C': 30, 'svc__gamma': 0.003}  test accuracy = 0.924
+both     best knobs {'svc__C': 30, 'svc__gamma': 0.003}  test accuracy = 0.951
+AUC catalog  = 0.9782
+AUC stamps   = 0.9776
+AUC both     = 0.9901
+
+=== 5-fold cross-validated accuracy (whole sample) ===
+catalog  0.9259 +- 0.0071
+stamps   0.9257 +- 0.0039
+both     0.9473 +- 0.0029
+
+=== PCA components comparison (5-fold CV) ===
+stamps   PCA= 16  0.9371 +- 0.0031
+stamps   PCA= 32  0.9340 +- 0.0046
+stamps   PCA= 64  0.9257 +- 0.0039
+stamps   PCA=128  0.9133 +- 0.0034
+stamps   PCA=256  0.8827 +- 0.0059
+both     PCA= 16  0.9609 +- 0.0050
+both     PCA= 32  0.9542 +- 0.0053
+both     PCA= 64  0.9473 +- 0.0029
+both     PCA=128  0.9366 +- 0.0028
+both     PCA=256  0.9204 +- 0.0050
+
+Best model ('both') made 122 mistakes out of 2500 test galaxies
+
+=== Permutation importance (drop in accuracy when the feature is shuffled) ===
+g_r             0.2854 +- 0.0058
+concentration   0.0890 +- 0.0043
+r_i             0.0531 +- 0.0044
+u_g             0.0348 +- 0.0027
+petror50_r      0.0241 +- 0.0020
+mag_r           0.0192 +- 0.0024
+i_z             0.0156 +- 0.0020
+mag_i           0.0136 +- 0.0032
+mag_z           0.0124 +- 0.0032
+petror90_r      0.0122 +- 0.0028
+mag_u           0.0066 +- 0.0011
+mag_g           0.0054 +- 0.0019
